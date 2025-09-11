@@ -1,0 +1,71 @@
+# ========================================
+# Node.js
+# ========================================
+# Dependencias
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build / coverage
+dist/
+build/
+coverage/
+.next/
+out/
+.cache/
+
+# Env
+.env
+.env.*.local
+
+# ========================================
+# JavaScript / General
+# ========================================
+*.log
+*.tmp
+*.swp
+*.DS_Store
+*.idea/
+*.vscode/
+*.sublime-*
+
+# ========================================
+# Python
+# ========================================
+# Compilados
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entornos virtuales
+.venv/
+venv/
+ENV/
+env/
+
+# Archivos de paquetes
+*.egg-info/
+.eggs/
+*.egg
+
+# Cache
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# Jupyter / IPython
+.ipynb_checkpoints
+*.ipynb#
+
+# ========================================
+# Otros
+# ========================================
+# SQLite / bases de datos locales
+*.sqlite3
+*.db
+
+# Archivos de sistema
+Thumbs.db
