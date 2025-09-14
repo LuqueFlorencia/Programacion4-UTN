@@ -2,29 +2,31 @@ import { EstadoInvalidoError } from './errores.js'
 
 export class Informe {
     constructor(){
-        this.pedidosPend = [];
-        this.pedidosAsig = [];
+        this.pedidosPendientes = [];
+        this.pedidosAsignados = [];
         this.pedidosEnRuta = [];
-        this.pedidosEntr = [];
-        this.pedidosCancel = [];
+        this.pedidosEntregados = [];
+        this.pedidosCancelados = [];
     }
 
+    // Registra los pedidos acorde a su estado
     registrarPedido(pedido){
+        let registro = {pedidoID: pedido.id, clienteID: pedido.cliente.id, productoID: pedido.producto.id};
         switch(pedido.estado){
             case 'pendiente':
-                this.pedidosPend.push(pedido);
+                this.pedidosPendientes.push(registro);
                 break;
             case 'asignado':
-                this.pedidosAsig.push(pedido);
+                this.pedidosAsignados.push(registro);
                 break;
             case 'enRuta':
-                this.pedidosEnRuta.push(pedido);
+                this.pedidosEnRuta.push(registro);
                 break;
             case 'entregado':
-                this.pedidosEntr.push(pedido);
+                this.pedidosEntregados.push(registro);
                 break;
             case 'cancelado':
-                this.pedidosCancel.push(pedido);
+                this.pedidosCancelados.push(registro);
                 break;
             default:
                 throw new EstadoInvalidoError('El estado es invalido');
