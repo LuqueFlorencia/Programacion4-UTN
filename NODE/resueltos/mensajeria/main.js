@@ -1,3 +1,7 @@
+/* Mensajes: - de quien es? - el msj - fecha
+   Contador de mensajes usando closure 
+ */
+
 import User from "./user.js";
 import Chat from "./chat.js";
 
