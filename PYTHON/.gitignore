@@ -1,0 +1,50 @@
+# Compilados de Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Archivos temporales
+*.log
+*.pot
+*.pyc
+*.swp
+*.tmp
+
+# Entornos virtuales
+env/
+venv/
+ENV/
+.venv/
+.python-version
+
+# Archivos de configuración locales
+*.env
+*.ini
+*.cfg
+*.local
+
+# IDEs
+.vscode/
+.idea/
+*.iml
+
+# Archivos de test/coverage
+.coverage
+.tox/
+.nox/
+.cache/
+.pytest_cache/
+
+# Archivos de Jupyter
+.ipynb_checkpoints
+
+# Distribución / empaquetado
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+
+# Documentación generada
+docs/_build/
