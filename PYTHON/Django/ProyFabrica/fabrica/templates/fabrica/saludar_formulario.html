@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Saludar</title>
+</head>
+<body>
+    <h2>Ingrese su nombre</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="string" name="nombre" required>
+        <button type="submit">Saludar</button>
+    </form>
+    
+        <p>{{ resultado }}</p>
+
+</body>
+</html>
