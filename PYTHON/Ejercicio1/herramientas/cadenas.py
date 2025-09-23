@@ -40,5 +40,3 @@ def contar_cantidades(texto: str) -> list[tuple[str, int]]:
       resultado.append((palabra, contador))
       cantidades.append(contador)
   
-  for r in resultado:
-    

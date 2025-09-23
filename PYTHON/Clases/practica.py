@@ -1,3 +1,6 @@
+# Clase básica con atributos
+# Metodos de una clase
+# Encapsulamiento
 class Persona:
     def __init__(self, nombre, edad):
         self.nombre = nombre
@@ -21,6 +24,7 @@ print (p2.presentarse())
 print (p2.get_edad())
 
 print("-----------------------------------------------------------------")
+# Clase con constructor con valores por defecto
 class Producto:
     def __init__(self, nombre, precio, stock = 0):
         self.nombre = nombre
@@ -44,6 +48,7 @@ print(prod2.nombre, prod2.precio, prod2.stock)
 print(prod2.comprar(5))
 
 print("-----------------------------------------------------------------")
+# Herencia simple
 class Animal:
     def hacer_sonido(self):
         print("Sonido generico")
@@ -61,6 +66,8 @@ for a in animales:
     a.hacer_sonido()
 
 print("-----------------------------------------------------------------")
+# Herencia con super()
+# Composicion de objetos (dependencias simples)
 class Motor:
     def encender(self):
         print("Motor encendido")
@@ -85,6 +92,7 @@ print(auto.color, auto.vel_max)
 auto.arrancar()
 
 print("-----------------------------------------------------------------")
+# Inyeccion de dependencias basica
 class Notificador:
     def enviar(self, mensaje):
         raise NotImplementedError
@@ -112,6 +120,7 @@ u2 = Usuario("Pedro", SMSNotificador())
 u2.notificar("tu pedido esta en camino")
 
 print("-----------------------------------------------------------------")
+# Inyeccion de dependencias avanzada
 class Pago:
     def pagar(self, monto):
         raise NotImplementedError
@@ -145,5 +154,3 @@ c2 = Carrito(PagoEfectivo())
 c2.agregar("Libro", 20)
 c2.agregar("Lapiz", 5)
 c2.checkout()
-
-print("-----------------------------------------------------------------")
