@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabla de Multiplicar</title>
+</head>
+<body>
+    <h2>Ingrese un número para ver su tabla de multiplicar</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="number" name="numero" required>
+        <button type="submit">Generar tabla</button>
+    </form>
+
+    {% if resultado %}
+        {% if resultado == "Número inválido" %}
+            <p>{{ resultado }}</p>
+        {% else %}
+            <h3>Tabla del {{ numero }}</h3>
+            <ul>
+                {% for n, i, r in resultado %}
+                    <li>{{ n }} × {{ i }} = {{ r }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
