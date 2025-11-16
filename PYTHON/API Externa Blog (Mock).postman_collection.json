@@ -1,0 +1,255 @@
+{
+	"info": {
+		"_postman_id": "85fdcdb1-1961-456f-a787-09b483f90471",
+		"name": "API Externa Blog (Mock)",
+		"description": "Simulación de API externa para proyecto Django Blog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12047192",
+		"_collection_link": "https://universal-robot-836951.postman.co/workspace/52e51365-0edd-4aa5-8cd3-4f73784b37f5/collection/12047192-85fdcdb1-1961-456f-a787-09b483f90471?action=share&source=collection_link&creator=12047192"
+	},
+	"item": [
+		{
+			"name": "GET /api/categorias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{mock_url}}/api/categorias",
+					"host": [
+						"{{mock_url}}"
+					],
+					"path": [
+						"api",
+						"categorias"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Categorías disponibles",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://abcd1234.mock.pstmn.io/api/categorias",
+							"protocol": "https",
+							"host": [
+								"abcd1234",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"api",
+								"categorias"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "[\n  {\"id\": 1, \"nombre\": \"Tecnología\"},\n  {\"id\": 2, \"nombre\": \"Educación\"}\n]"
+				}
+			]
+		},
+		{
+			"name": "GET /api/perfiles/:username",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{JWT_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{mock_url}}/api/perfiles/placido",
+					"host": [
+						"{{mock_url}}"
+					],
+					"path": [
+						"api",
+						"perfiles",
+						"placido"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Perfil válido",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlBsYWNpZG8iLCJpYXQiOjE1MTYyMzkwMjJ9",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://abcd1234.mock.pstmn.io/api/perfiles/placido",
+							"protocol": "https",
+							"host": [
+								"abcd1234",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"api",
+								"perfiles",
+								"placido"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"username\": \"placido\",\n  \"bio\": \"Profesor de Django\",\n  \"posts_count\": 5\n}"
+				},
+				{
+					"name": "Token inválido",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mock_url}}/api/perfiles/placido",
+							"host": [
+								"{{mock_url}}"
+							],
+							"path": [
+								"api",
+								"perfiles",
+								"placido"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"error\": \"Token inválido\"\n}"
+				}
+			]
+		},
+		{
+			"name": "POST /api/recomendaciones",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{JWT_TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"tema\": \"Django\"\n}"
+				},
+				"url": {
+					"raw": "{{mock_url}}/api/recomendaciones",
+					"host": [
+						"{{mock_url}}"
+					],
+					"path": [
+						"api",
+						"recomendaciones"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Recomendaciones exitosas",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlBsYWNpZG8iLCJpYXQiOjE1MTYyMzkwMjJ9",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"tema\": \"Django\"\n}"
+						},
+						"url": {
+							"raw": "https://abcd1234.mock.pstmn.io/api/recomendaciones",
+							"protocol": "https",
+							"host": [
+								"abcd1234",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"api",
+								"recomendaciones"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"recomendaciones\": [\n    {\"post_id\": 1, \"titulo\": \"Intro a Django\"}\n  ]\n}"
+				},
+				{
+					"name": "Token faltante",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"tema\": \"Django\"\n}"
+						},
+						"url": {
+							"raw": "{{mock_url}}/api/recomendaciones",
+							"host": [
+								"{{mock_url}}"
+							],
+							"path": [
+								"api",
+								"recomendaciones"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"error\": \"Token inválido\"\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "mock_url",
+			"value": "https://abcd1234.mock.pstmn.io"
+		},
+		{
+			"key": "JWT_TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlBsYWNpZG8iLCJpYXQiOjE1MTYyMzkwMjJ9"
+		}
+	]
+}

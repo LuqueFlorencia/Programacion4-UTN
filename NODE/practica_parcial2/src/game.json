@@ -1,0 +1,86 @@
+{
+  "guardians": [
+	{
+    	"id": 1,
+		"name": "Thor",
+		"level": 1,
+		"xp": 0,
+		"energy": 100,
+		"skills": ["strenght", "smartness"],
+		"items": [
+			{
+				"name": "knife",
+				"power": 2
+			}
+		]
+	},
+	{
+    	"id": 2,
+		"name": "Gondor",
+		"level": 1,
+		"xp": 0,
+		"energy": 100,
+		"skills": ["strenght"],
+		"items": [
+			{
+				"name": "knife",
+				"power": 2
+			}
+		]
+	},
+	{
+    	"id": 3,
+		"name": "Drak",
+		"level": 1,
+		"xp": 0,
+		"energy": 100,
+		"skills": ["smartness"],
+		"items": [
+			{
+				"name": "knife",
+				"power": 2
+			}
+		]
+	}
+  ],
+  "challenges": [
+	{
+		"id": 1,
+		"title": "strenght",
+		"difficulty": 1,
+		"energyCost": 10,
+		"rewardFormula": "difficulty * 8 + energyCost * 2",
+		"requiredSkill": "strenght",
+		"attempts": []
+	},
+	{
+		"id": 2,
+		"title": "smartness",
+		"difficulty": 3,
+		"energyCost": 10,
+		"rewardFormula": "difficulty^2 + energyCost",
+		"requiredSkill": "smartness",
+		"attempts": []
+	},
+	{
+		"id": 3,
+		"title": "speed",
+		"difficulty": 5,
+		"energyCost": 20,
+		"rewardFormula": "difficulty^2 + energyCost",
+		"requiredSkill": "speed",
+		"attempts": []
+	}
+  ],
+  "duels": [
+	{
+		"id": 1,
+		"guardian1": 1,
+		"guardian2": 2,
+		"winner": 1,
+		"power1": 134,
+		"power2": 120,
+		"timestamp": "2025-11-13T14:00:00.000Z"
+	}
+  ]
+}
