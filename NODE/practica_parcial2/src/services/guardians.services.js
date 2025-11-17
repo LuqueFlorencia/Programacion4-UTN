@@ -8,7 +8,7 @@ async function obtenerGuardiansData(id = null){
     if (id != null){
         guardians = guardians.filter(g => g.id === id)
 
-        if (guardians.count() !== 1)
+        if (guardians.length !== 1)
             throw new NotFoundError(`Guardian con id ${id} no existe.`);
 
         return guardians[0];
@@ -58,6 +58,8 @@ async function getGuardianes(filters){
 async function ajustarEnergia(id, energy){
     const guardian = await obtenerGuardiansData(id);
     guardian.energy = energy;
+
+    await guardarJson(guardian, 'guardian');
     return guardian;
 };
 

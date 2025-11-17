@@ -13,9 +13,9 @@ app.get('/', (req, res) => {
     res.json({ message: 'API Guardianes OK' });
 });
 
-app.use('/guardianes', guardiansRoutes);
-app.use('/desafios', challengesRoutes);
-app.use('/duelos', duelsRoutes);
+app.use('/guardians', guardiansRoutes);
+app.use('/challenges', challengesRoutes);
+app.use('/duels', duelsRoutes);
 
 app.use(errorHandler);
 app.use(loggerGlobal);

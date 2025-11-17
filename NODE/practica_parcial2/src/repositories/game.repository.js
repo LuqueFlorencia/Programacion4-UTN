@@ -58,7 +58,7 @@ async function guardarJson(data, tipo = null) {
             throw new BadRequestError("Tipo inválido en guardarJson. Debe ser 'guardian' o 'challenge' o 'duel'.")
     }
 
-    await fs.writeFile(filePath, JSON.stringify(data, null, 2));
+    await fs.writeFile(filePath, JSON.stringify(game, null, 2));
 };
 
 module.exports = { leerJson, guardarJson };

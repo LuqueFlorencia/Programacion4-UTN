@@ -5,7 +5,13 @@ const crearChallengeSchema = Joi.object({
     difficulty: Joi.number().integer().min(1).max(10).required(),
     energyCost: Joi.number().integer().min(1).required(),
     rewardFormula: Joi.string().min(3).required(),
-    requiredSkill: Joi.string().min(3).required()
+    requiredSkill: Joi.string().min(3).required(),
+    attempts: Joi.array().items(Joi.object({
+        guardianId: Joi.number().integer().min(1).required(),
+        status: Joi.string().min(3).valid('success', 'failed').required(),
+        xpReward: Joi.number().integer().min(0).required(),
+        timestamp: Joi.date().required()
+    })).default([])
 });
 
 const getChallengeSchema = Joi.object({

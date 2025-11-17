@@ -1,5 +1,5 @@
 const { leerJson, guardarJson } = require('../repositories/game.repository');
-const { obtenerGuardiansData } = require('../services/guardians.services');
+const { obtenerGuardiansData } = require('./guardians.services');
 const helper = require('../utils/mathHelper');
 
 async function obtenerDuelsData(){
@@ -48,15 +48,15 @@ async function crearDuelo(data){
 
         helper.calcularLevelUp(winner, 'guardian');
         await guardarJson(winner, 'guardian');
-    };
 
-    await guardarJson(loser, 'guardian');
+        await guardarJson(loser, 'guardian');
+    };
 
     // Crear registro del duelo
     const nuevo = {
         ...data,
         id: newId,
-        winner,
+        winner: winner.id,
         power1,
         power2,
         timestamp: new Date().toISOString()

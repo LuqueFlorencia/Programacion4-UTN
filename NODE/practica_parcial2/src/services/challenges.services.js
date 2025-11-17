@@ -1,6 +1,6 @@
 const { leerJson, guardarJson } = require('../repositories/game.repository');
 const { NotFoundError, BadRequestError } = require('../utils/errores')
-const { obtenerGuardiansData } = require('../services/guardians.services');
+const { obtenerGuardiansData } = require('./guardians.services');
 const helper = require('../utils/mathHelper');
 
 async function obtenerChallengeData(id = null) {
@@ -10,7 +10,7 @@ async function obtenerChallengeData(id = null) {
     if (id !== null){
         challenges = challenges.filter(c => c.id === id);
 
-        if (challenges.count() !== 1)
+        if (challenges.length !== 1)
             throw new NotFoundError(`Desafío con id ${id} no existe.`)
 
         return challenges[0];
@@ -84,6 +84,7 @@ async function intentarDesafio(challengeId, guardianId){
     // Verificar dificultad vs nivel
     if (challenge.difficulty > guardian.level * 2){
         status = helper.calcularPenalizacion(guardian, challenge);
+        xpReward = 0;
     } else {
         guardian.xp += xpReward;
         helper.calcularLevelUp(guardian);
@@ -107,9 +108,7 @@ async function intentarDesafio(challengeId, guardianId){
         xpReward,
         guardian: {
             id: guardian.id,
-            level: guardian.level,
-            xp: guardian.xp,
-            energy: guardian.energy
+            level: guardian.level
         }
     };
 };
