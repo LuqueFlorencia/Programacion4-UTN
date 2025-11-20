@@ -6,7 +6,12 @@ const authRoutes = require('./routes/auth.routes')
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3000',
+    methods: ['GET','POST','PATCH',],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
 app.use(express.json());
 
 app.get('/', (_req, res) => {
@@ -18,4 +23,3 @@ app.use('/auth', authRoutes);
 app.use(errorHandler);
 
 module.exports = app;
-
