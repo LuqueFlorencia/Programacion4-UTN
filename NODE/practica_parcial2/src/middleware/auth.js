@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const { AUTH_CONFIG } = require('../config/auth.config');
 const { BadRequestError, NotFoundError, AuthorizationError } = require('../utils/errores');
 
 function authMiddleware(req, res, next) {
@@ -12,7 +11,7 @@ function authMiddleware(req, res, next) {
     if (scheme !== 'Bearer' || !token) throw new AuthorizationError('Formato de autenticacion invalido.');
 
     try {
-        const payload = jwt.verify(token, AUTH_CONFIG.jwtSecret);
+        const payload = jwt.verify(token, process.env.SECRET);
         req.user = payload;
         next();
     } catch (err) {
