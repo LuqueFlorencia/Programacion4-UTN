@@ -1,4 +1,4 @@
-const service = require('../services/challenges.service');
+const service = require('../services/challenges.services');
 
 async function createChallenge(req, res, next){
     const challenge = await service.crearDesafio(req.body);

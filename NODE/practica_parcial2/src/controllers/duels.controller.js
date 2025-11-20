@@ -1,4 +1,4 @@
-const service = require('../services/duels.service')
+const service = require('../services/duels.services')
 
 async function createDuel(req, res, next){
     const duel = await service.crearDuelo(req.body);
