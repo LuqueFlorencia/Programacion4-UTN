@@ -1,0 +1,28 @@
+const configOpt = {
+    abortEarly: false,
+    stripUnknown: true,
+    convert: true
+};
+
+function validate(schema, source = 'body', options = {}) {
+    const opts = {...configOpt, ...options};
+
+    return (req, _res, next) => {
+        const data = req[source];
+        const {error, value} = schema.validate(data, opts)
+
+        if (error){
+            const msg = error.details.map(data.message).join(' | ');
+            return next(new Error(msg));
+        };
+
+        req[source] = value;
+        next();
+    };
+};
+
+const validarBody = (schema, options) => validate(schema, 'body', options);
+const validarQuery = (schema, options) => validate(schema, 'query', options);
+const validarParams = (schema, options) => validate(schema, 'params', options);
+
+module.exports = { validarBody, validarQuery, validarParams }
