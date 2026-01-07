@@ -1,22 +1,29 @@
-class AuthorizationError extends Error{
+class BadRequestError extends Error {
     constructor(msg){
         super(msg);
-        this.name = 'AuthorizationError';
+        this.name = 'BadRequestError'
     }
 };
 
-class BadRequestError extends Error{
+class NotFoundError extends Error {
     constructor(msg){
         super(msg);
-        this.name = 'BadRequestError';
+        this.name = 'NotFoundError'
     }
 };
 
-class NotFoundError extends Error{
+class AuthorizationError extends Error {
     constructor(msg){
         super(msg);
-        this.name = 'NotFoundError';
+        this.name = 'AuthorizationError'
     }
 };
 
-module.exports = { AuthorizationError, BadRequestError, NotFoundError };
+class ValidationError extends Error {
+    constructor(msg){
+        super(msg);
+        this.name = 'ValidationError'
+    }
+};
+
+module.exports = { BadRequestError, NotFoundError, AuthorizationError, ValidationError }

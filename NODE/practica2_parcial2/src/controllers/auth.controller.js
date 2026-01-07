@@ -1,11 +1,11 @@
 const jwt = require('jsonwebtoken');
-const { AuthorizationError } = require('../utils/errores');
+const { AuthorizationError } = require('../utils/errores')
 
 async function login(req, res, next){
     const { username, password } = req.body;
 
     if (username !== process.env.APP_USER || password !== process.env.APP_PASS)
-        throw new AuthorizationError('Credenciales invalidas');
+        throw new AuthorizationError("Credenciales invalidas");
 
     const payload = { username }
     const token = jwt.sign(payload, process.env.SECRET, {
@@ -15,4 +15,4 @@ async function login(req, res, next){
     return res.status(200).json({token});
 };
 
-module.exports = { login };
+module.exports = { login }

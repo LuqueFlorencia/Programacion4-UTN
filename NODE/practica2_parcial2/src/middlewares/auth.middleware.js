@@ -1,14 +1,14 @@
 const jwt = require('jsonwebtoken');
-const { AuthorizationError, BadRequestError, NotFoundError } = require('../utils/errores');
+const { BadRequestError, NotFoundError, AuthorizationError, ValidationError } = require('../utils/errores');
 
-function authMiddleware (req, res, next) {
+function authMiddleware(req, res, next) {
     const authHeader = req.headers['authorization'];
 
-    if (!authHeader) throw new AuthorizationError('No se indico datos para autorizacion.');
+    if (!authHeader) throw new AuthorizationError('No se indicaron datos para autorizacion.');
 
-    const [schema, token] = authHeader.split(' ');
+    const [scheme, token] = authHeader.split(' ');
 
-    if (schema !== 'Bearer' || !token) throw new AuthorizationError('Formato de autorizacion invalido.');
+    if (scheme !== 'Bearer' || !token) throw new AuthorizationError('Formato de autenticacion invalido.');
 
     try {
         const payload = jwt.verify(token, process.env.SECRET);
@@ -16,30 +16,30 @@ function authMiddleware (req, res, next) {
         next();
     } catch (err) {
         throw new AuthorizationError('Token invalido o expirado.');
-    };
+    }
 };
 
-function getErrorResponse(error, msg = 'Algo salio mal.') {
+function getErrorResponse(error, msg = "Algo salio mal") {
     const response = {};
 
     if (error instanceof AuthorizationError)
         response.status = 401
-    else if (error instanceof BadRequestError)
+    else if (error instanceof BadRequestError || error instanceof ValidationError)
         response.status = 400
     else if (error instanceof NotFoundError)
         response.status = 404
-    else
+    else 
         response.status = 500
 
     response.message = error.message || msg;
-    response.name = error.name || error.code || 'Error';
+    response.title = error.name || error.code || 'Error';
 
     return response;
 };
 
-function errorHandler (err, _req, res, _next){
-    const errorResponse = getErrorResponse(err);
-    return res.status(errorResponse.status).json(errorResponse);
+function errorHandler(err, req, res, next) {
+    const errorRes = getErrorResponse(err);
+    return res.status(errorRes.status).json(errorRes);
 };
 
 const asyncHandler = (fn) => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next);
